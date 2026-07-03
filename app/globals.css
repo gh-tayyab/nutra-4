@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+  }
+
+  body {
+    @apply bg-paper text-ink antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-sans;
+    letter-spacing: -0.01em;
+  }
+
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid #A9781E;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-content {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.18em] text-gold;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-extrabold uppercase tracking-wide text-paper shadow-card transition-colors hover:bg-gold-deep focus-visible:bg-gold-deep;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink px-7 py-3.5 text-sm font-extrabold uppercase tracking-wide text-ink transition-colors hover:border-gold hover:text-gold-deep;
+  }
+
+  /* Signature element: a foil "seal" mark used for price / trust / quality
+     callouts — a nod to the embossed seals on premium supplement packaging,
+     rendered in line art instead of a literal sticker. */
+  .foil-seal {
+    @apply relative inline-flex items-center justify-center rounded-full border-[1.5px] border-gold;
+    background: radial-gradient(circle at 30% 25%, #F6ECD2 0%, #E8D9AF 45%, #C9A752 100%);
+  }
+}
