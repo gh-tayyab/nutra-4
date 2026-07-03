@@ -4,9 +4,9 @@ import { useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 
 const bundles = [
-  { id: "1", label: "1 Box", boxes: 1, price: 3000, save: null },
-  { id: "3", label: "3 Boxes", boxes: 3, price: 8100, save: "Save 10%" },
-  { id: "5", label: "5 Boxes", boxes: 5, price: 12000, save: "Save 20%" },
+  { id: "1", label: "1 Box", boxes: 1, price: 3500, save: null },
+  { id: "3", label: "3 Boxes", boxes: 3, price: 9800, save: "Save 10%" },
+  { id: "5", label: "5 Boxes", boxes: 5, price: 14800, save: "Save 20%" },
 ];
 
 export default function OrderSection() {

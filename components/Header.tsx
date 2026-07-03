@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { siteConfig } from "@/lib/site-config";
-
+import Image from "next/image";
 const navLinks = [
   { label: "Benefits", href: "/#benefits" },
   { label: "How It Works", href: "/#how-it-works" },
@@ -18,11 +18,20 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
       <div className="container-content flex h-20 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2" aria-label={`${siteConfig.name} home`}>
-          <span className="text-2xl font-extrabold tracking-tight text-ink">
-            NUTRA<span className="text-gold">-4</span>
-          </span>
-        </Link>
+      <Link
+  href="/"
+  className="flex items-center"
+  aria-label={`${siteConfig.name} home`}
+>
+  <Image
+    src="/images/logoo.png"
+    alt="Nutra-4 Logo"
+    width={180}
+    height={60}
+    priority
+    className="h-28 w-auto"
+  />
+</Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
           {navLinks.map((link) => (

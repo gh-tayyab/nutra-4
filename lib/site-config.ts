@@ -5,8 +5,8 @@ export const siteConfig = {
   tagline: "Healthy weight gain, backed by real results.",
   description:
     "Nutra-4 is a weight gainer supplement made for the skinny-to-strong journey. Rs. 3,000 a box, free home delivery across Pakistan, and Cash on Delivery available.",
-  price: "Rs. 3,000",
-  priceNumeric: 3000,
+  price: "Rs. 3,500",
+  priceNumeric: 3500,
   currency: "PKR",
   phones: [
     { label: "0310-0111154", href: "tel:+923100111154" },
