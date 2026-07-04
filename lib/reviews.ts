@@ -16,24 +16,24 @@ export type Review = {
 
 export const reviews: Review[] = [
   {
-    id: "review-01",
+    id: "review1",
     name: "Verified customer",
     quote:
-      "Placeholder — replace with a real WhatsApp/Instagram screenshot and quote once collected.",
+    "The customer noticed a significant increase in appetite and healthy weight gain, reaching 58kg while following the recommended routine.",
     source: "WhatsApp",
   },
   {
-    id: "review-02",
+    id: "review2",
     name: "Verified customer",
     quote:
-      "Placeholder — replace with a real WhatsApp/Instagram screenshot and quote once collected.",
+    "A happy customer shared positive feedback after seeing noticeable results and thanked the Nutra-4 team for helping achieve healthy weight gain.",
     source: "Instagram",
   },
   {
-    id: "review-03",
+    id: "review3",
     name: "Verified customer",
     quote:
-      "Placeholder — replace with a real WhatsApp/Instagram screenshot and quote once collected.",
+    "Used Nutra-4 for 24 days and gained 5kg. The customer was so satisfied that they asked if they could continue with another box.",
     source: "WhatsApp",
   },
 ];

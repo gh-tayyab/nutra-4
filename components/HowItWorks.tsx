@@ -30,7 +30,7 @@ export default function HowItWorks() {
     <section id="how-it-works" className="bg-ink py-16 text-paper sm:py-24">
       <div className="container-content">
         <div className="max-w-xl">
-          <span className="eyebrow">How It Works</span>
+          <span className="eyebrow text-yellow-300">How It Works</span>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
             How Nutra-4 actually works.
           </h2>
@@ -46,11 +46,11 @@ export default function HowItWorks() {
 
   return (
     <div key={s.step}>
-      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-gold/50 bg-white/5">
-        <Icon className="h-7 w-7 text-gold" />
+      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-yellow-200 bg-white/5">
+        <Icon className="h-7 w-7 text-yellow-300" />
       </div>
 
-      <span className="text-xs font-extrabold uppercase tracking-[0.18em] text-gold">
+      <span className="text-xs font-extrabold uppercase tracking-[0.18em] text-yellow-300">
         Step {s.step}
       </span>
 

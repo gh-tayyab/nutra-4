@@ -1,3 +1,4 @@
+import Image from "next/image";
 import AssetSlot from "./AssetSlot";
 import { reviews } from "@/lib/reviews";
 
@@ -18,28 +19,39 @@ export default function Reviews() {
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((review) => (
-            <figure
-              key={review.id}
-              className="flex flex-col overflow-hidden rounded-xl2 border border-line bg-white shadow-card"
-            >
-              <AssetSlot
-                label={`${review.source} Screenshot — ${review.id}`}
-                aspect="aspect-[4/3]"
-                className="rounded-none border-0 border-b border-line"
-              />
-              <blockquote className="flex-1 p-6">
-                <p className="text-sm leading-relaxed text-ink">&ldquo;{review.quote}&rdquo;</p>
-              </blockquote>
-              <figcaption className="flex items-center justify-between border-t border-line px-6 py-4">
-                <span className="text-sm font-extrabold text-ink">{review.name}</span>
-                <span className="text-xs font-bold uppercase tracking-wide text-gold">
-                  via {review.source}
-                </span>
-              </figcaption>
-            </figure>
-          ))}
+  {reviews.map((review) => (
+    <div
+      key={review.id}
+      className="overflow-hidden rounded-2xl border border-line bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+    >
+      {/* WhatsApp Screenshot */}
+      <div className="overflow-hidden">
+        <Image
+          src={`/images/reviews/${review.id}.jpeg`}
+          alt={`${review.name} WhatsApp Review`}
+          width={400}
+          height={700}
+          className="w-full h-auto object-cover"
+        />
+      </div>
+
+      {/* Customer Info */}
+      <div className="p-5">
+        <div className="flex items-center justify-between">
+          <h3 className="font-bold text-ink">{review.name}</h3>
+
+          <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-bold text-green-700">
+            WhatsApp
+          </span>
         </div>
+
+        <p className="mt-3 text-sm text-stone leading-relaxed">
+          {review.quote}
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
 
         <p className="mt-8 text-xs text-stone">
           Have you tried Nutra-4? Send us your photo on{" "}

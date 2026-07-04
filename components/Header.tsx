@@ -17,21 +17,21 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
-      <div className="container-content flex h-20 items-center justify-between">
-      <Link
-  href="/"
-  className="flex items-center"
-  aria-label={`${siteConfig.name} home`}
->
-  <Image
-    src="/images/logoo.png"
-    alt="Nutra-4 Logo"
-    width={180}
-    height={60}
-    priority
-    className="h-28 w-auto"
-  />
-</Link>
+      <div className="container-content flex h-24 items-center justify-between">
+        <Link
+          href="/"
+          className="flex items-center"
+          aria-label={`${siteConfig.name} home`}
+        >
+          <Image
+            src="/images/logoo.png"
+            alt="Nutra-4 Logo"
+            width={180}
+            height={60}
+            priority
+            className="h-20 w-auto object-contain lg:h-24"
+          />
+        </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
           {navLinks.map((link) => (
@@ -69,11 +69,27 @@ export default function Header() {
           aria-label="Toggle menu"
           className="flex h-10 w-10 items-center justify-center rounded-full border border-line lg:hidden"
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
             {open ? (
-              <path d="M4 4L16 16M16 4L4 16" stroke="#15130F" strokeWidth="1.8" strokeLinecap="round" />
+              <path
+                d="M4 4L16 16M16 4L4 16"
+                stroke="#15130F"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
             ) : (
-              <path d="M2 5H18M2 10H18M2 15H18" stroke="#15130F" strokeWidth="1.8" strokeLinecap="round" />
+              <path
+                d="M2 5H18M2 10H18M2 15H18"
+                stroke="#15130F"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
             )}
           </svg>
         </button>
@@ -81,7 +97,10 @@ export default function Header() {
 
       {open && (
         <div className="border-t border-line bg-paper lg:hidden">
-          <nav className="container-content flex flex-col gap-1 py-4" aria-label="Mobile">
+          <nav
+            className="container-content flex flex-col gap-1 py-4"
+            aria-label="Mobile"
+          >
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -94,12 +113,20 @@ export default function Header() {
             ))}
             <div className="mt-2 flex flex-col gap-1 border-t border-line pt-3">
               {siteConfig.phones.map((phone) => (
-                <a key={phone.href} href={phone.href} className="px-2 py-1 text-sm font-bold text-stone">
+                <a
+                  key={phone.href}
+                  href={phone.href}
+                  className="px-2 py-1 text-sm font-bold text-stone"
+                >
                   {phone.label}
                 </a>
               ))}
             </div>
-            <a href="/#order" onClick={() => setOpen(false)} className="btn-primary mt-3">
+            <a
+              href="/#order"
+              onClick={() => setOpen(false)}
+              className="btn-primary mt-3"
+            >
               Order Now
             </a>
           </nav>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
+import Image from "next/image";
 
 const quickLinks = [
   { label: "Benefits", href: "/#benefits" },
@@ -17,9 +18,14 @@ export default function Footer() {
     <footer className="border-t border-line bg-ink text-paper">
       <div className="container-content grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <span className="text-2xl font-extrabold tracking-tight">
-            NUTRA<span className="text-gold">-4</span>
-          </span>
+        <Image
+            src="/images/logoo.png"
+            alt="Nutra-4 Logo"
+            width={180}
+            height={60}
+            priority
+            className="h-20 w-auto object-contain lg:h-40"
+          />
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-paper/70">
             A single, focused weight gainer formula — made for the
             skinny-to-strong journey, with free delivery and Cash on
@@ -48,7 +54,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-extrabold uppercase tracking-wide text-gold">Quick Links</p>
+          <p className="text-xs font-extrabold uppercase tracking-wide text-yellow-300">Quick Links</p>
           <ul className="mt-4 space-y-2">
             {quickLinks.map((link) => (
               <li key={link.label}>
@@ -61,7 +67,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-extrabold uppercase tracking-wide text-gold">Contact</p>
+          <p className="text-xs font-extrabold uppercase tracking-wide text-yellow-300">Contact</p>
           <ul className="mt-4 space-y-2 text-sm text-paper/70">
             {siteConfig.phones.map((p) => (
               <li key={p.href}>
@@ -76,11 +82,11 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-extrabold uppercase tracking-wide text-gold">Order</p>
+          <p className="text-xs font-extrabold uppercase tracking-wide text-yellow-300">Order</p>
           <p className="mt-4 text-sm text-paper/70">
             Free home delivery. Cash on Delivery available.
           </p>
-          <a href="/#order" className="btn-primary mt-4 bg-gold text-ink hover:bg-gold-deep hover:text-paper">
+          <a href="/#order" className="btn-primary mt-4 bg-yellow-300 text-ink hover:scale-100">
             Order Now
           </a>
         </div>

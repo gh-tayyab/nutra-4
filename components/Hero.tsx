@@ -13,7 +13,7 @@ export default function Hero() {
     <section className="relative overflow-hidden">
       <div className="container-content grid gap-12 py-14 sm:py-20 lg:grid-cols-2 lg:items-center lg:py-24">
         <div className="order-1 lg:order-1">
-          <span className="eyebrow">Weight Gainer · Since 2023</span>
+          <span className="eyebrow text-yellow-600">Weight Gainer · Since 2023</span>
           <h1 className="mt-4 text-[2.5rem] font-extrabold leading-[1.05] tracking-tight text-ink sm:text-6xl">
             Go from skinny to strong — visibly, in weeks.
           </h1>
@@ -66,7 +66,7 @@ export default function Hero() {
         </div>
 
         <div className="order-2 lg:order-2">
-          <div className="relative mx-auto w-full max-w-md h-[400px]">
+          <div className="relative mx-auto w-full h-[560px] max-w-[500px]">
             <div
               className="absolute -inset-6 -z-10 rounded-full"
               aria-hidden="true"
@@ -74,10 +74,14 @@ export default function Hero() {
 
             <Image
               src="/images/product1.png"
-              alt="Hero Product Shot"
+              alt="Hero Product"
               fill
-              className="object-contain"
-              priority
+              className="
+    object-contain
+    drop-shadow-[0_45px_70px_rgba(0,0,0,.45)]
+    rotate-[-8deg]
+    scale-110
+  "
             />
           </div>
         </div>

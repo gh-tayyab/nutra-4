@@ -21,7 +21,7 @@ export default function OrderSection() {
     <section id="order" className="bg-ink py-16 text-paper sm:py-24">
       <div className="container-content">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="eyebrow">Order Now</span>
+          <span className="eyebrow text-yellow-300">Order Now</span>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
             Pick your bundle, pay on delivery.
           </h2>
@@ -42,12 +42,12 @@ export default function OrderSection() {
                 aria-pressed={active}
                 className={`relative rounded-xl2 border-2 p-6 text-left transition-colors ${
                   active
-                    ? "border-gold bg-white text-ink shadow-gold"
+                    ? "border-yellow-300 bg-white text-ink shadow-gold"
                     : "border-white/15 bg-white/5 text-paper hover:border-white/30"
                 }`}
               >
                 {bundle.save && (
-                  <span className="absolute -top-3 right-4 rounded-full bg-gold px-3 py-1 text-[10px] font-extrabold uppercase tracking-wide text-ink">
+                  <span className="absolute -top-3 right-4 rounded-full bg-yellow-300 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wide text-ink">
                     {bundle.save}
                   </span>
                 )}
@@ -63,7 +63,7 @@ export default function OrderSection() {
         </div>
 
         <div className="mx-auto mt-10 flex max-w-3xl flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="btn-primary bg-gold text-ink hover:bg-gold-deep hover:text-paper">
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="btn-primary bg-yellow-300 text-ink hover:bg-gold-deep hover:text-paper">
             Order {current.label} via WhatsApp
           </a>
           <a href={siteConfig.phones[0].href} className="btn-secondary border-white/30 text-paper hover:border-gold hover:text-gold">
