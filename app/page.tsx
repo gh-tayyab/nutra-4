@@ -15,15 +15,15 @@ export default function HomePage() {
     <>
       <main id="main">
         <Hero />
-        <SocialProofStrip />
+        {/* <SocialProofStrip /> */}
         <WhoItsFor />
+        <WhyChooseUs />
         <HowItWorks />
         <Ingredients />
         <HowToUse />
         <Reviews />
-        <WhyChooseUs />
-        <FAQ />
         <OrderSection />
+        <FAQ />
         <ContactSection />
       </main>
     </>
