@@ -3,6 +3,8 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 // One family, two weights — per brand direction (500 body / 800 display).
 const manrope = Manrope({
@@ -144,8 +146,10 @@ export default function RootLayout({
     <html lang="en-PK" className={manrope.variable}>
       <body className="font-sans">
         <JsonLd />
+        <Header />
         {children}
         <WhatsAppButton />
+        <Footer />
       </body>
     </html>
   );

@@ -1,6 +1,19 @@
+"use client";
+
 import Link from "next/link";
-import { siteConfig } from "@/lib/site-config";
 import Image from "next/image";
+import { FaFacebookF, FaInstagram } from "react-icons/fa6";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  MessageCircle,
+  ShieldCheck,
+  Truck,
+  CheckCircle2,
+} from "lucide-react";
+
+import { siteConfig } from "@/lib/site-config";
 
 const quickLinks = [
   { label: "Benefits", href: "/#benefits" },
@@ -15,87 +28,207 @@ const quickLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-ink text-paper">
-      <div className="container-content grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
-        <Image
-            src="/images/logoo.png"
-            alt="Nutra-4 Logo"
-            width={180}
-            height={60}
-            priority
-            className="h-20 w-auto object-contain lg:h-40"
-          />
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-paper/70">
-            A single, focused weight gainer formula — made for the
-            skinny-to-strong journey, with free delivery and Cash on
-            Delivery across Pakistan.
-          </p>
-          <div className="mt-5 flex gap-3">
+    <footer className="relative overflow-hidden bg-[#080808] text-white">
+      {/* Glow */}
+
+      <div className="absolute left-0 top-0 h-80 w-80 rounded-full bg-[#D8B35B]/10 blur-[120px]" />
+
+      <div className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-[#D8B35B]/10 blur-[120px]" />
+
+      <div className="container-content relative z-10 py-20">
+        {/* Trust Strip */}
+
+        <div className="mb-16 grid gap-6 rounded-[30px] border border-white/10 bg-white/5 p-8 md:grid-cols-3">
+          <div className="flex items-center gap-4">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#D8B35B]/10">
+              <ShieldCheck className="text-[#D8B35B]" size={30} />
+            </div>
+
+            <div>
+              <h3 className="font-black">100% Original</h3>
+
+              <p className="text-sm text-white/55">Premium Quality Formula</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#D8B35B]/10">
+              <Truck className="text-[#D8B35B]" size={30} />
+            </div>
+
+            <div>
+              <h3 className="font-black">Free Delivery</h3>
+
+              <p className="text-sm text-white/55">Across Pakistan</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#D8B35B]/10">
+              <CheckCircle2 className="text-[#D8B35B]" size={30} />
+            </div>
+
+            <div>
+              <h3 className="font-black">Cash On Delivery</h3>
+
+              <p className="text-sm text-white/55">Safe & Secure Shopping</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Grid */}
+
+        <div className="grid gap-14 lg:grid-cols-4">
+          {/* Brand */}
+
+          <div>
+            <Image
+              src="/images/logoo.png"
+              alt="Nutra-4 Logo"
+              width={220}
+              height={80}
+              className="h-24 w-auto object-contain"
+              priority
+            />
+
+            <p className="mt-6 leading-8 text-white/60">
+              Nutra-4 Premium Weight Gainer helps naturally support healthy
+              weight gain, muscle growth and everyday energy with high-quality
+              nutrition.
+            </p>
+
+            <div className="mt-8 flex gap-4">
+              <a
+                href={siteConfig.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:border-[#D8B35B] hover:text-[#D8B35B]"
+              >
+                <FaFacebookF size={20} />
+              </a>
+
+              <a
+                href={siteConfig.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 transition hover:border-[#D8B35B] hover:text-[#D8B35B]"
+              >
+                <FaInstagram size={20} />
+              </a>
+            </div>
+          </div>
+          {/* Quick Links */}
+
+          <div>
+            <h3 className="mb-6 text-lg font-black text-[#D8B35B]">
+              Quick Links
+            </h3>
+
+            <ul className="space-y-4">
+              {quickLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-white/65 transition hover:translate-x-1 hover:text-[#D8B35B]"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+
+          <div>
+            <h3 className="mb-6 text-lg font-black text-[#D8B35B]">
+              Contact Us
+            </h3>
+
+            <div className="space-y-5">
+              {siteConfig.phones.map((phone) => (
+                <a
+                  key={phone.href}
+                  href={phone.href}
+                  className="flex items-start gap-4 text-white/70 transition hover:text-white"
+                >
+                  <Phone size={20} className="mt-1 text-[#D8B35B]" />
+
+                  <span>{phone.label}</span>
+                </a>
+              ))}
+
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="flex items-start gap-4 text-white/70 transition hover:text-white"
+              >
+                <Mail size={20} className="mt-1 text-[#D8B35B]" />
+
+                <span>{siteConfig.email}</span>
+              </a>
+
+              <a
+                href={siteConfig.whatsapp.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-4 text-white/70 transition hover:text-white"
+              >
+                <MessageCircle size={20} className="mt-1 text-[#D8B35B]" />
+
+                <span>Chat on WhatsApp</span>
+              </a>
+
+              <div className="flex items-start gap-4 text-white/70">
+                <MapPin size={20} className="mt-1 text-[#D8B35B]" />
+
+                <span>{siteConfig.address}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+
+          <div>
+            <h3 className="mb-6 text-lg font-black text-[#D8B35B]">
+              Start Your Weight Gain Journey
+            </h3>
+
+            <p className="leading-7 text-white/60">
+              Order Nutra-4 Premium Weight Gainer today and enjoy Free Delivery
+              with Cash on Delivery available all across Pakistan.
+            </p>
+
             <a
-              href={siteConfig.social.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Nutra-4 on Facebook"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 transition-colors hover:border-gold hover:text-gold"
+              href="/#order"
+              className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#D8B35B] to-[#A9781E] px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-black transition duration-300 hover:scale-105"
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M10.5 4.5H12V2h-2c-1.7 0-3 1.3-3 3v1.5H5.5V9H7v6h2V9h1.6l.4-2.5H9V5.5c0-.6.4-1 1-1z"/></svg>
-            </a>
-            <a
-              href={siteConfig.social.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Nutra-4 on Instagram"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 transition-colors hover:border-gold hover:text-gold"
-            >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="13" height="13" rx="3.5" stroke="currentColor" strokeWidth="1.3"/><circle cx="8" cy="8" r="3" stroke="currentColor" strokeWidth="1.3"/><circle cx="11.7" cy="4.3" r="0.8" fill="currentColor"/></svg>
+              Order Now
             </a>
           </div>
         </div>
 
-        <div>
-          <p className="text-xs font-extrabold uppercase tracking-wide text-yellow-300">Quick Links</p>
-          <ul className="mt-4 space-y-2">
-            {quickLinks.map((link) => (
-              <li key={link.label}>
-                <Link href={link.href} className="text-sm text-paper/70 hover:text-paper">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Bottom */}
 
-        <div>
-          <p className="text-xs font-extrabold uppercase tracking-wide text-yellow-300">Contact</p>
-          <ul className="mt-4 space-y-2 text-sm text-paper/70">
-            {siteConfig.phones.map((p) => (
-              <li key={p.href}>
-                <a href={p.href} className="hover:text-paper">{p.label}</a>
-              </li>
-            ))}
-            <li>
-              <a href={`mailto:${siteConfig.email}`} className="hover:text-paper">{siteConfig.email}</a>
-            </li>
-            <li>{siteConfig.address}</li>
-          </ul>
-        </div>
+        <div className="mt-20 border-t border-white/10 pt-8">
+          <div className="flex flex-col items-center justify-between gap-6 text-center md:flex-row">
+            <p className="text-sm text-white/45">
+              © {new Date().getFullYear()} {siteConfig.name}. All Rights
+              Reserved.
+            </p>
 
-        <div>
-          <p className="text-xs font-extrabold uppercase tracking-wide text-yellow-300">Order</p>
-          <p className="mt-4 text-sm text-paper/70">
-            Free home delivery. Cash on Delivery available.
-          </p>
-          <a href="/#order" className="btn-primary mt-4 bg-yellow-300 text-ink hover:scale-100">
-            Order Now
-          </a>
-        </div>
-      </div>
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/45">
+              <span>Premium Weight Gainer Pakistan</span>
 
-      <div className="border-t border-white/10 py-6">
-        <p className="container-content text-center text-xs text-paper/50">
-          © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
-        </p>
+              <span>•</span>
+
+              <span>Healthy Weight Gain Supplement</span>
+
+              <span>•</span>
+
+              <span>Free Delivery Nationwide</span>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );

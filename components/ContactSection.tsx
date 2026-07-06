@@ -1,158 +1,201 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Clock3,
+  ShieldCheck,
+} from "lucide-react";
+
 import { siteConfig } from "@/lib/site-config";
 
-type Status = "idle" | "sending" | "sent" | "error";
-
 export default function ContactSection() {
-  const [status, setStatus] = useState<Status>("idle");
-
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus("sending");
-    const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error("Request failed");
-      setStatus("sent");
-      form.reset();
-    } catch {
-      setStatus("error");
-    }
-  }
-
   return (
-    <section id="contact" className="py-16 sm:py-24">
-      <div className="container-content grid gap-12 lg:grid-cols-2">
-        <div>
-          <span className="eyebrow">Contact</span>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-            Reach out. We&rsquo;re here to help.
-          </h2>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-stone sm:text-base">
-            Questions before ordering? Call, WhatsApp, or send a message —
-            we usually reply the same day.
-          </p>
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-[#F8F5EE] py-24"
+    >
+      {/* Background */}
 
-          <form onSubmit={handleSubmit} className="mt-8 grid gap-4 sm:grid-cols-2">
-            <div>
-              <label htmlFor="firstName" className="text-xs font-bold uppercase tracking-wide text-stone">
-                First name
-              </label>
-              <input
-                id="firstName"
-                name="firstName"
-                required
-                className="mt-1 w-full rounded-lg border border-line bg-white px-4 py-3 text-sm text-ink outline-none focus:border-gold"
-              />
-            </div>
-            <div>
-              <label htmlFor="lastName" className="text-xs font-bold uppercase tracking-wide text-stone">
-                Last name
-              </label>
-              <input
-                id="lastName"
-                name="lastName"
-                className="mt-1 w-full rounded-lg border border-line bg-white px-4 py-3 text-sm text-ink outline-none focus:border-gold"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="text-xs font-bold uppercase tracking-wide text-stone">
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                className="mt-1 w-full rounded-lg border border-line bg-white px-4 py-3 text-sm text-ink outline-none focus:border-gold"
-              />
-            </div>
-            <div>
-              <label htmlFor="phone" className="text-xs font-bold uppercase tracking-wide text-stone">
-                Phone number
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                className="mt-1 w-full rounded-lg border border-line bg-white px-4 py-3 text-sm text-ink outline-none focus:border-gold"
-              />
-            </div>
-            <div className="sm:col-span-2">
-              <label htmlFor="message" className="text-xs font-bold uppercase tracking-wide text-stone">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                required
-                className="mt-1 w-full rounded-lg border border-line bg-white px-4 py-3 text-sm text-ink outline-none focus:border-gold"
-              />
-            </div>
-            <div className="sm:col-span-2">
-              <button type="submit" disabled={status === "sending"} className="btn-primary w-full sm:w-auto">
-                {status === "sending" ? "Sending…" : "Submit"}
-              </button>
-              {status === "sent" && (
-                <p className="mt-3 text-sm font-semibold text-gold-deep">
-                  Thanks — we&rsquo;ll be in touch shortly.
-                </p>
-              )}
-              {status === "error" && (
-                <p className="mt-3 text-sm font-semibold text-red-700">
-                  Something went wrong. Please call or WhatsApp us instead.
-                </p>
-              )}
-            </div>
-          </form>
+      <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-[#D8B35B]/10 blur-[120px]" />
+
+      <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-[#D8B35B]/10 blur-[120px]" />
+
+      <div className="container-content relative z-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex rounded-full border border-[#D8B35B]/20 bg-[#D8B35B]/10 px-5 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#A9781E]">
+            CONTACT NUTRA-4
+          </span>
+
+          <h2 className="mt-7 text-4xl font-black text-[#111] lg:text-6xl">
+            Need Help Before
+            <span className="gold-text block mt-2">Ordering?</span>
+          </h2>
+
+          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-[#666]">
+            Have questions about our Premium Weight Gainer? Our support team is
+            available every day to help you choose the right package and answer
+            your questions.
+          </p>
         </div>
 
-        <div className="flex flex-col gap-6">
-          <div className="overflow-hidden rounded-xl2 border border-line shadow-card">
-            <iframe
-              src={siteConfig.mapEmbedSrc}
-              width="100%"
-              height="320"
-              style={{ border: 0 }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Nutra-4 location — Karachi, Pakistan"
-            />
+        <div className="mt-20 grid gap-10 lg:grid-cols-2">
+          {/* LEFT */}
+
+          <div className="rounded-[34px] border border-[#E5DDCC] bg-white p-10 shadow-[0_20px_60px_rgba(0,0,0,.08)]">
+            <div className="flex items-center gap-5">
+              <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-[#D8B35B] to-[#A9781E]">
+                <MessageCircle size={38} className="text-black" />
+              </div>
+
+              <div>
+                <h3 className="text-3xl font-black text-[#111]">
+                  Talk To Our Team
+                </h3>
+
+                <p className="mt-2 text-[#666]">Fast replies on WhatsApp.</p>
+              </div>
+            </div>
+
+            <div className="mt-10 space-y-6">
+              {/* Phone */}
+
+              <div className="flex items-center gap-5 rounded-2xl border border-[#EEE4D2] p-5">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#D8B35B]/10">
+                  <Phone size={26} className="text-[#A9781E]" />
+                </div>
+
+                <div>
+                  <p className="text-sm text-[#777]">Call Us</p>
+
+                  {siteConfig.phones.map((phone) => (
+                    <a
+                      key={phone.href}
+                      href={phone.href}
+                      className="block text-lg font-black text-[#111] hover:text-[#A9781E]"
+                    >
+                      {phone.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* WhatsApp */}
+
+              <div className="flex items-center gap-5 rounded-2xl border border-[#EEE4D2] p-5">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100">
+                  <MessageCircle size={26} className="text-green-600" />
+                </div>
+
+                <div>
+                  <p className="text-sm text-[#777]">WhatsApp Support</p>
+
+                  <a
+                    href={siteConfig.whatsapp.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg font-black text-[#111] hover:text-green-600"
+                  >
+                    Chat With Us
+                  </a>
+                </div>
+              </div>
+
+              {/* Email */}
+
+              <div className="flex items-center gap-5 rounded-2xl border border-[#EEE4D2] p-5">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#D8B35B]/10">
+                  <Mail size={26} className="text-[#A9781E]" />
+                </div>
+
+                <div>
+                  <p className="text-sm text-[#777]">Email Address</p>
+
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="text-lg font-black text-[#111] hover:text-[#A9781E]"
+                  >
+                    {siteConfig.email}
+                  </a>
+                </div>
+              </div>
+
+              {/* Address */}
+
+              <div className="flex items-center gap-5 rounded-2xl border border-[#EEE4D2] p-5">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#D8B35B]/10">
+                  <MapPin size={26} className="text-[#A9781E]" />
+                </div>
+
+                <div>
+                  <p className="text-sm text-[#777]">Our Location</p>
+
+                  <p className="font-bold text-[#111]">{siteConfig.address}</p>
+                </div>
+              </div>
+
+              {/* Hours */}
+
+              <div className="flex items-center gap-5 rounded-2xl border border-[#EEE4D2] p-5">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#D8B35B]/10">
+                  <Clock3 size={26} className="text-[#A9781E]" />
+                </div>
+
+                <div>
+                  <p className="text-sm text-[#777]">Support Hours</p>
+
+                  <p className="font-bold text-[#111]">
+                    Monday – Sunday • 9:00 AM – 10:00 PM
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href={siteConfig.whatsapp.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10 flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#D8B35B] to-[#A9781E] px-8 py-5 text-lg font-black uppercase tracking-[0.15em] text-black transition hover:scale-[1.03]"
+            >
+              Chat on WhatsApp
+            </a>
           </div>
 
-          <div className="grid gap-4 rounded-xl2 border border-line bg-white p-6 shadow-card sm:grid-cols-2">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-stone">Phone</p>
-              {siteConfig.phones.map((p) => (
-                <a key={p.href} href={p.href} className="block text-sm font-extrabold text-ink hover:text-gold-deep">
-                  {p.label}
-                </a>
-              ))}
+          {/* RIGHT */}
+
+          <div className="space-y-8">
+            <div className="overflow-hidden rounded-[34px] border border-[#E5DDCC] bg-white shadow-[0_20px_60px_rgba(0,0,0,.08)]">
+              <iframe
+                src={siteConfig.mapEmbedSrc}
+                width="100%"
+                height="520"
+                style={{ border: 0 }}
+                loading="lazy"
+                title="Nutra-4 Pakistan"
+              />
             </div>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-stone">Email</p>
-              <a href={`mailto:${siteConfig.email}`} className="text-sm font-extrabold text-ink hover:text-gold-deep">
-                {siteConfig.email}
-              </a>
-            </div>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-stone">Location</p>
-              <p className="text-sm font-extrabold text-ink">{siteConfig.address}</p>
-            </div>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-stone">WhatsApp</p>
-              <a href={siteConfig.whatsapp.href} target="_blank" rel="noopener noreferrer" className="text-sm font-extrabold text-ink hover:text-gold-deep">
-                Chat with us
-              </a>
+
+            <div className="rounded-[30px] border border-[#E5DDCC] bg-white p-8 shadow-[0_15px_45px_rgba(0,0,0,.08)]">
+              <div className="flex items-center gap-4">
+                <ShieldCheck size={34} className="text-[#A9781E]" />
+
+                <div>
+                  <h3 className="text-2xl font-black text-[#111]">
+                    Shop With Confidence
+                  </h3>
+
+                  <p className="mt-2 text-[#666]">
+                    ✔ 100% Original Product
+                    <br />
+                    ✔ Free Delivery Across Pakistan
+                    <br />
+                    ✔ Cash On Delivery Available
+                    <br />✔ Friendly Customer Support
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

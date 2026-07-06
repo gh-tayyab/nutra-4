@@ -1,64 +1,172 @@
-const rows = [
-  { feature: "Quality-checked formula", nutra4: true, generic: false },
-  { feature: "Cash on Delivery", nutra4: true, generic: false },
-  { feature: "Free home delivery", nutra4: true, generic: false },
-  { feature: "Local support, real phone numbers", nutra4: true, generic: false },
-  { feature: "Transparent, single-product focus", nutra4: true, generic: false },
-];
+"use client";
 
-function Check({ ok }: { ok: boolean }) {
-  if (ok) {
-    return (
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-label="Yes">
-        <circle cx="9" cy="9" r="9" fill="#A9781E" />
-        <path d="M4.8 9.2L7.4 11.8L13.2 6" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    );
-  }
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-label="No">
-      <circle cx="9" cy="9" r="9" fill="#E6E1D6" />
-      <path d="M6 6L12 12M12 6L6 12" stroke="#6B6559" strokeWidth="1.6" strokeLinecap="round" />
-    </svg>
-  );
-}
+import {
+  CheckCircle2,
+  XCircle,
+  Crown,
+  ShieldCheck,
+  Truck,
+  PhoneCall,
+  BadgeCheck,
+} from "lucide-react";
+
+const rows = [
+  {
+    feature: "Premium Weight Gainer Formula",
+    nutra: true,
+    generic: false,
+    icon: Crown,
+  },
+  {
+    feature: "100% Original Product",
+    nutra: true,
+    generic: false,
+    icon: ShieldCheck,
+  },
+  {
+    feature: "Cash On Delivery",
+    nutra: true,
+    generic: false,
+    icon: BadgeCheck,
+  },
+  {
+    feature: "Free Delivery",
+    nutra: true,
+    generic: false,
+    icon: Truck,
+  },
+  {
+    feature: "Dedicated WhatsApp Support",
+    nutra: true,
+    generic: false,
+    icon: PhoneCall,
+  },
+];
 
 export default function WhyChooseUs() {
   return (
-    <section className="bg-paper2 py-16 sm:py-24">
-      <div className="container-content">
-        <div className="max-w-xl">
-          <span className="eyebrow">Why Choose Nutra-4</span>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-            Compared to generic gainers.
+    <section className="relative overflow-hidden bg-[#F8F5EE] py-24">
+
+      <div className="absolute left-0 top-0 h-80 w-80 rounded-full bg-[#D8B35B]/10 blur-[120px]" />
+
+      <div className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-[#D8B35B]/10 blur-[120px]" />
+
+      <div className="container-content relative z-10">
+
+        <div className="mx-auto max-w-3xl text-center">
+
+          <span className="inline-flex rounded-full border border-[#D8B35B]/20 bg-[#D8B35B]/10 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-[#A9781E]">
+
+            COMPARISON
+
+          </span>
+
+          <h2 className="mt-6 text-4xl font-black text-[#111] lg:text-6xl">
+
+            Why Nutra-4 Is
+
+            <span className="gold-text block mt-2">
+
+              Different
+
+            </span>
+
           </h2>
+
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[#666]">
+
+            Compare Nutra-4 with ordinary weight gain supplements and see why
+            thousands choose our premium formula.
+
+          </p>
+
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-xl2 border border-line bg-white shadow-card">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-line bg-ink text-paper">
-                <th className="px-6 py-4 text-left font-extrabold">Feature</th>
-                <th className="px-6 py-4 text-center font-extrabold text-gold">Nutra-4</th>
-                <th className="px-6 py-4 text-center font-extrabold text-paper/60">Generic Gainer</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row) => (
-                <tr key={row.feature} className="border-b border-line last:border-0">
-                  <td className="px-6 py-4 font-semibold text-ink">{row.feature}</td>
-                  <td className="px-6 py-4">
-                    <div className="flex justify-center"><Check ok={row.nutra4} /></div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="flex justify-center"><Check ok={row.generic} /></div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-20 overflow-hidden rounded-[35px] border border-[#E5DDCC] bg-white shadow-[0_25px_70px_rgba(0,0,0,.08)]">
+
+          <div className="grid grid-cols-3 bg-[#111] text-white">
+
+            <div className="p-6 text-lg font-black">
+
+              Features
+
+            </div>
+
+            <div className="border-x border-white/10 p-6 text-center">
+
+              <h3 className="gold-text text-2xl font-black">
+
+                Nutra-4
+
+              </h3>
+
+            </div>
+
+            <div className="p-6 text-center font-bold text-white/70">
+
+              Generic Gainer
+
+            </div>
+
+          </div>
+
+          {rows.map((row) => {
+
+            const Icon = row.icon;
+
+            return (
+
+              <div
+                key={row.feature}
+                className="grid grid-cols-3 border-t border-[#EFE7D8] transition hover:bg-[#FCFAF5]"
+              >
+
+                <div className="flex items-center gap-4 p-6">
+
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#D8B35B]/10">
+
+                    <Icon
+                      className="h-6 w-6 text-[#A9781E]"
+                    />
+
+                  </div>
+
+                  <span className="font-bold text-[#111]">
+
+                    {row.feature}
+
+                  </span>
+
+                </div>
+
+                <div className="flex items-center justify-center border-x border-[#EFE7D8]">
+
+                  <CheckCircle2
+                    size={28}
+                    className="text-green-600"
+                  />
+
+                </div>
+
+                <div className="flex items-center justify-center">
+
+                  <XCircle
+                    size={28}
+                    className="text-gray-400"
+                  />
+
+                </div>
+
+              </div>
+
+            );
+
+          })}
+
         </div>
+
       </div>
+
     </section>
   );
 }

@@ -2,50 +2,137 @@
 
 import { useEffect, useState } from "react";
 
-const quotes = [
-  { text: "Gained visible weight in the first month. Genuinely surprised.", name: "Verified customer" },
-  { text: "Cash on delivery made it an easy first order — product delivered on time.", name: "Verified customer" },
-  { text: "No bloating, no weird aftertaste. Just consistent gains.", name: "Verified customer" },
+const reviews = [
+  {
+    text: "I gained healthy weight within a few weeks. Highly recommended!",
+    name: "Verified Customer",
+  },
+  {
+    text: "Best Weight Gainer in Pakistan. Fast delivery and amazing quality.",
+    name: "Verified Buyer",
+  },
+  {
+    text: "No bloating, great taste and noticeable muscle gains.",
+    name: "Verified Customer",
+  },
 ];
 
-function Stars() {
-  return (
-    <div className="flex items-center gap-0.5" aria-hidden="true">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} width="16" height="16" viewBox="0 0 20 20" fill="#A9781E">
-          <path d="M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L1.3 7.8l6.1-.7L10 1.5z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
+const badges = [
+  {
+    title: "1200+",
+    subtitle: "Happy Customers",
+    icon: "👥",
+  },
+  {
+    title: "4.9★",
+    subtitle: "Customer Rating",
+    icon: "⭐",
+  },
+  {
+    title: "100%",
+    subtitle: "Original Formula",
+    icon: "🛡️",
+  },
+  {
+    title: "COD",
+    subtitle: "Nationwide",
+    icon: "🚚",
+  },
+];
 
 export default function SocialProofStrip() {
-  const [index, setIndex] = useState(0);
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setIndex((i) => (i + 1) % quotes.length);
-    }, 4500);
+      setCurrent((p) => (p + 1) % reviews.length);
+    }, 4000);
+
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <section className="border-y border-line bg-paper2 py-6">
-      <div className="container-content flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
-        <div className="flex items-center gap-3">
-          <Stars />
-          <span className="text-sm font-extrabold text-ink">4.8/5</span>
-          <span className="text-sm text-stone">from 500+ happy customers</span>
+    <section className="relative overflow-hidden bg-[#0d0d0d] py-10">
+
+      <div className="absolute inset-0 bg-gradient-to-r from-[#D8B35B]/5 via-transparent to-[#D8B35B]/5" />
+
+      <div className="container-content relative z-10">
+
+        <div className="grid gap-6 lg:grid-cols-5">
+
+          <div className="lg:col-span-3">
+
+            <div className="rounded-[30px] border border-white/10 bg-white/5 p-8 backdrop-blur-2xl">
+
+              <div className="flex items-center gap-4">
+
+                <div className="flex text-[#D8B35B] text-xl">
+
+                  ★★★★★
+
+                </div>
+
+                <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#D8B35B]">
+
+                  VERIFIED REVIEWS
+
+                </span>
+
+              </div>
+
+              <p className="mt-6 text-xl font-semibold leading-9 text-white transition-all duration-500">
+
+                "{reviews[current].text}"
+
+              </p>
+
+              <p className="mt-5 text-sm uppercase tracking-[0.15em] text-white/60">
+
+                — {reviews[current].name}
+
+              </p>
+
+            </div>
+
+          </div>
+
+          <div className="grid grid-cols-2 gap-5 lg:col-span-2">
+
+            {badges.map((item) => (
+
+              <div
+                key={item.title}
+                className="rounded-[26px] border border-white/10 bg-white/5 p-6 text-center backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-[#D8B35B]/40 hover:bg-white/10"
+              >
+
+                <div className="text-3xl">
+
+                  {item.icon}
+
+                </div>
+
+                <h3 className="mt-4 text-3xl font-black text-[#D8B35B]">
+
+                  {item.title}
+
+                </h3>
+
+                <p className="mt-2 text-sm font-medium text-white/70">
+
+                  {item.subtitle}
+
+                </p>
+
+              </div>
+
+            ))}
+
+          </div>
+
         </div>
 
-        <div className="max-w-md" role="status" aria-live="polite">
-          <p className="text-sm font-semibold italic text-ink">
-            &ldquo;{quotes[index].text}&rdquo;
-          </p>
-          <p className="mt-1 text-xs text-stone">— {quotes[index].name}</p>
-        </div>
       </div>
+
     </section>
   );
 }

@@ -62,3 +62,198 @@
     background: radial-gradient(circle at 30% 25%, #F6ECD2 0%, #E8D9AF 45%, #C9A752 100%);
   }
 }
+
+/* ==========================================================
+   PREMIUM NAVBAR
+========================================================== */
+
+@layer components {
+
+  .glass-nav {
+    background: rgba(12, 12, 12, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+  .gold-gradient {
+    background: linear-gradient(
+      135deg,
+      #f7d878 0%,
+      #d8b35b 35%,
+      #b98724 70%,
+      #8b6218 100%
+    );
+  }
+
+  .gold-text {
+    background: linear-gradient(
+      135deg,
+      #FFE7A0,
+      #D8B35B,
+      #A9781E
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-border {
+    border: 1px solid rgba(216,179,91,.35);
+  }
+
+}
+
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:#0d0d0d;
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(
+    #D8B35B,
+    #A9781E
+  );
+  border-radius:100px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background:#D8B35B;
+}
+
+/* ==========================================================
+   SELECTION
+========================================================== */
+
+::selection{
+  background:#D8B35B;
+  color:#111;
+}
+
+/* ==========================================================
+   SMOOTH TRANSITIONS
+========================================================== */
+
+*{
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    backdrop-filter;
+}
+
+/* ==========================================================
+   GOLD GLOW
+========================================================== */
+
+.gold-shadow{
+  box-shadow:
+  0 10px 35px rgba(216,179,91,.20),
+  0 0 60px rgba(216,179,91,.12);
+}
+
+/* ==========================================================
+   FLOATING ANIMATION
+========================================================== */
+
+@keyframes floating{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-8px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+
+}
+
+.animate-floating{
+  animation:floating 5s ease-in-out infinite;
+}
+
+/* ==========================================================
+   GOLD SHIMMER BUTTON
+========================================================== */
+
+@keyframes shimmer{
+
+  0%{
+    transform:translateX(-120%);
+  }
+
+  100%{
+    transform:translateX(220%);
+  }
+
+}
+
+.shimmer{
+
+  position:relative;
+  overflow:hidden;
+
+}
+
+.shimmer::after{
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:35%;
+  height:100%;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.35),
+    transparent
+  );
+
+  animation:shimmer 3s infinite;
+
+}
+
+/* ==========================================================
+   HERO OVERLAY
+========================================================== */
+
+.hero-overlay{
+
+  background:
+  radial-gradient(circle at top right,
+  rgba(216,179,91,.18),
+  transparent 40%),
+
+  radial-gradient(circle at bottom left,
+  rgba(216,179,91,.12),
+  transparent 45%),
+
+  linear-gradient(
+    180deg,
+    #0b0b0b 0%,
+    #111111 100%
+  );
+
+}
